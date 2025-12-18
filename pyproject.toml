@@ -9,11 +9,12 @@ authors = [
     {name = "Tim Roith", email = "tim.roith@desy.de"},
 ]
 description="CBXpy"
-dependencies = [  
-    'numpy', 
-    'scipy', 
-    'matplotlib'
-    ]
+dependencies = [
+    'numpy',
+    'scipy',
+    'matplotlib',
+    "ipython>=7.9.0",
+]
 readme = "README.md"
 requires-python = ">3.5.2"
 classifiers = [

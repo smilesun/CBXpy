@@ -18,7 +18,7 @@ dyn = PolarCBO(f,  # objective function
                x=x,  # initial particles, will be reshaped according to d
                alpha=1.,  # heat
                # noise='anisotropic',
-               sigma=2.,  # noise
+               sigma=0.,  # noise
                kappa=1.5,
                verbosity=0,
                track_args={'names': [
@@ -30,4 +30,4 @@ dyn = PolarCBO(f,  # objective function
 dyn.optimize(sched=multiply(factor=1.02, maximum=1e10))
 
 
-vis_cbx_dynamic_history(dyn, box=2)
+vis_cbx_dynamic_history(dyn, box=2, save_gif_path="polar_cbo_sigma0.gif")

@@ -13,7 +13,7 @@ except ImportError:  # pragma: no cover
 
 def vis_cbx_dynamic_history(
     dyn,
-    box=2,
+    box,
     step=50,
     pause_time=0.5,
     *,
@@ -38,7 +38,8 @@ def vis_cbx_dynamic_history(
     if save_gif_path is not None:
         save_gif_path = str(save_gif_path)
         Path(save_gif_path).parent.mkdir(parents=True, exist_ok=True)
-        writer_specs.append(animation.PillowWriter(fps=fps).saving(fig, save_gif_path, dpi))
+        writer_specs.append(
+            animation.PillowWriter(fps=fps).saving(fig, save_gif_path, dpi))
 
     if save_mp4_path is not None:
         if shutil.which("ffmpeg") is None:
@@ -48,7 +49,8 @@ def vis_cbx_dynamic_history(
             )
         save_mp4_path = str(save_mp4_path)
         Path(save_mp4_path).parent.mkdir(parents=True, exist_ok=True)
-        writer_specs.append(animation.FFMpegWriter(fps=fps).saving(fig, save_mp4_path, dpi))
+        writer_specs.append(
+            animation.FFMpegWriter(fps=fps).saving(fig, save_mp4_path, dpi))
 
     with ExitStack() as stack:
         writers = [stack.enter_context(ctx) for ctx in writer_specs]
@@ -64,7 +66,9 @@ def vis_cbx_dynamic_history(
 
             if show:
                 if ipy_display is None:
-                    raise RuntimeError("show=True requires IPython; set show=False to save without displaying.")
+                    raise RuntimeError(
+                        "show=True requires IPython; \
+                        set show=False to save without displaying.")
                 ipy_display.display(fig)
                 ipy_display.clear_output(wait=True)
                 plt.pause(pause_time)

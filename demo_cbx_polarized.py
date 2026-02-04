@@ -1,6 +1,6 @@
 import numpy as np
 
-from cbx.objectives import snowflake, Rastrigin, Himmelblau, three_hump_camel
+from cbx.objectives import snowflake, Rastrigin, Himmelblau, three_hump_camel, Himmelblau32
 
 from cbx.dynamics import CBO, PolarCBO
 from cbx.scheduler import multiply
@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
     # create_demo(three_hump_camel(), x, "polarized_three_hump_camel")
     # create_demo(Himmelblau(), x, sigma=0)
-    create_demo(Himmelblau(),
+    create_demo(Himmelblau32(),
                 initial_particles=initial_particles,
                 sigma=0.1)
     # create_demo(snowflake(), x, "polarized_snowflake")

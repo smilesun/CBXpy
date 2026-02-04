@@ -1,9 +1,11 @@
-from cbx.plotting import PlotDynamicHistory
+import numpy as np
+import shutil
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from contextlib import ExitStack
 from pathlib import Path
-import shutil
+
+from cbx.plotting import PlotDynamicHistory
 
 try:
     from IPython import display as ipy_display
@@ -24,9 +26,13 @@ def vis_cbx_dynamic_history(
     show=True,
 ):
     fig, ax = plt.subplots(1,)
+    levels = np.geomspace(1e-2, 1e4, 30)
     pl = PlotDynamicHistory(
         dyn, ax=ax,
-        objective_args={'x_min': -box, 'x_max': box, 'cmap': 'Blues'},
+        objective_args={'x_min': -box, 'x_max': box,
+                        'cmap': 'Blues',
+                        'levels': levels
+                        },
         plot_consensus=True,
         plot_drift=True
     )

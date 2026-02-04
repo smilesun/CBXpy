@@ -297,7 +297,7 @@ class Himmelblau(cbx_objective):
 class Himmelblau32(Himmelblau):
     def apply(self, x):
         y = super().apply(x)
-        y += 0.1 * (x[...,0] - 3)**2 + 0.1 * (x[...,1] - 2)**2
+        y += 0.02 * ((x[...,0] - 3)**2 + (x[...,1] - 2)**2)
         return y
 
 

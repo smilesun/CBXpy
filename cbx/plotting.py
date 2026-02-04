@@ -17,6 +17,7 @@ def contour_2D(f, ax = None, num_pts = 50,
                     y_min = None, y_max = None,
                     d = 2,
                     dims = None,
+                    filled = True,
                     **kwargs):
     if ax is None:
         ax = plt.gca()
@@ -30,7 +31,10 @@ def contour_2D(f, ax = None, num_pts = 50,
     Z = np.zeros((num_pts, num_pts, d))
     Z[...,dims] = XY
     Z = f(Z)
-    cf = ax.contourf(X,Y,Z, **kwargs)
+    if filled:
+        cf = ax.contourf(X, Y, Z, **kwargs)
+    else:
+        cf = ax.contour(X, Y, Z, **kwargs)
     return cf
 
 
@@ -153,7 +157,7 @@ class PlotDynamic:
             _ = plot_1D(self.dyn.f, ax=self.ax, **self.objective_args)
         else:
              _ = contour_2D(self.dyn.f, ax=self.ax, d=self.d, dims=self.dims,
-                            **self.objective_args)
+                            filled=False, **self.objective_args)
     def init_x(self, x):
         """
         Initializes the particle plot.
@@ -454,4 +458,3 @@ class PlotDynamicHistory(PlotDynamic):
                     )
         
         
-

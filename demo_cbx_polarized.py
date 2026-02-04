@@ -45,6 +45,6 @@ if __name__ == "__main__":
 
     # create_demo(three_hump_camel(), x, "polarized_three_hump_camel")
     # create_demo(Himmelblau(), x, sigma=0)
-    create_demo(Himmelblau(), x)
+    create_demo(Himmelblau(), x, sigma=0.1)
     # create_demo(snowflake(), x, "polarized_snowflake")
     plot_objective(Rastrigin())
